@@ -55,8 +55,7 @@ class MTSICSScaleDriver(AbstractScaleDriver):
 
         match = SICS_ANSWER_RE.match(response)
         if not match:
-            print(response)
-            raise ScaleAcquireDataError("Unexpected SICS format")
+            raise ScaleAcquireDataError("Unexpected SICS format: ", response)
 
         weight = float(match.group("weight"))
         self._last_weight = weight
